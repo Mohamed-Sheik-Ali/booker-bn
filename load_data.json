@@ -1,0 +1,142 @@
+[
+    {
+        "model": "core.movie",
+        "pk": 1,
+        "fields": {
+            "title": "The Shawshank Redemption",
+            "description": "Two imprisoned men bond over several years, finding solace and eventual redemption through acts of common decency.",
+            "duration": "142",
+            "genre": "Drama",
+            "poster_image": "https://example.com/shawshank.jpg",
+            "created_at": "2024-11-22T02:48:26.851Z",
+            "updated_at": "2024-11-22T03:00:50.792Z",
+            "release_date": "1994-09-22T06:00:00Z"
+        }
+    },
+    {
+        "model": "core.movie",
+        "pk": 2,
+        "fields": {
+            "title": "The Godfather",
+            "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+            "duration": "175",
+            "genre": "Crime",
+            "poster_image": "https://example.com/godfather.jpg",
+            "created_at": "2024-11-22T03:04:01.420Z",
+            "updated_at": "2024-11-22T03:04:01.420Z",
+            "release_date": "1972-03-24T03:03:46Z"
+        }
+    },
+    {
+        "model": "core.movie",
+        "pk": 3,
+        "fields": {
+            "title": "The Dark Knight",
+            "description": "When the menace known as the Joker emerges, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+            "duration": "152",
+            "genre": "Action",
+            "poster_image": "https://example.com/dark_knight.jpg",
+            "created_at": "2024-11-22T14:33:07.544Z",
+            "updated_at": "2024-11-22T14:33:07.544Z",
+            "release_date": "2008-07-18T14:32:46Z"
+        }
+    },
+    {
+        "model": "core.movie",
+        "pk": 4,
+        "fields": {
+            "title": "Inception",
+            "description": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+            "duration": "148",
+            "genre": "Sci-Fi",
+            "poster_image": "https://example.com/inception.jpg",
+            "created_at": "2024-11-22T02:48:26.851Z",
+            "updated_at": "2024-11-22T03:00:50.792Z",
+            "release_date": "2010-07-16T06:00:00Z"
+        }
+    },
+    {
+        "model": "core.movie",
+        "pk": 5,
+        "fields": {
+            "title": "Interstellar",
+            "description": "Explorers undertake a mission to ensure humanity's survival when Earth becomes uninhabitable.",
+            "duration": "169",
+            "genre": "Sci-Fi",
+            "poster_image": "https://example.com/interstellar.jpg",
+            "created_at": "2024-11-22T14:33:07.544Z",
+            "updated_at": "2024-11-22T14:33:07.544Z",
+            "release_date": "2014-11-07T14:32:46Z"
+        }
+    },
+    {
+        "model": "core.movie",
+        "pk": 6,
+        "fields": {
+            "title": "Gladiator",
+            "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family.",
+            "duration": "155",
+            "genre": "Drama",
+            "poster_image": "https://example.com/gladiator.jpg",
+            "created_at": "2024-11-22T02:48:26.851Z",
+            "updated_at": "2024-11-22T03:00:50.792Z",
+            "release_date": "2000-05-01T06:00:00Z"
+        }
+    },
+    {
+        "model": "core.movie",
+        "pk": 7,
+        "fields": {
+            "title": "The Matrix",
+            "description": "A computer hacker learns about the true nature of his reality and his role in the war against its controllers.",
+            "duration": "136",
+            "genre": "Sci-Fi",
+            "poster_image": "https://example.com/matrix.jpg",
+            "created_at": "2024-11-22T14:33:07.544Z",
+            "updated_at": "2024-11-22T14:33:07.544Z",
+            "release_date": "1999-03-31T14:32:46Z"
+        }
+    },
+    {
+        "model": "core.movie",
+        "pk": 8,
+        "fields": {
+            "title": "Titanic",
+            "description": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
+            "duration": "195",
+            "genre": "Romance",
+            "poster_image": "https://example.com/titanic.jpg",
+            "created_at": "2024-11-22T02:48:26.851Z",
+            "updated_at": "2024-11-22T03:00:50.792Z",
+            "release_date": "1997-12-19T06:00:00Z"
+        }
+    },
+    {
+        "model": "core.movie",
+        "pk": 9,
+        "fields": {
+            "title": "Avatar",
+            "description": "A paraplegic Marine dispatched to the moon Pandora becomes torn between following orders and protecting the world he feels is his home.",
+            "duration": "162",
+            "genre": "Sci-Fi",
+            "poster_image": "https://example.com/avatar.jpg",
+            "created_at": "2024-11-22T02:48:26.851Z",
+            "updated_at": "2024-11-22T03:00:50.792Z",
+            "release_date": "2009-12-18T06:00:00Z"
+        }
+    },
+    {
+        "model": "core.movie",
+        "pk": 10,
+        "fields": {
+            "title": "Avengers: Endgame",
+            "description": "After the devastating events of Avengers: Infinity War, the universe is in ruins. The Avengers assemble once more to reverse Thanos' actions.",
+            "duration": "181",
+            "genre": "Action",
+            "poster_image": "https://example.com/endgame.jpg",
+            "created_at": "2024-11-22T14:33:07.544Z",
+            "updated_at": "2024-11-22T14:33:07.544Z",
+            "release_date": "2019-04-26T14:32:46Z"
+        }
+    }
+]
