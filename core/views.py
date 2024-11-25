@@ -169,12 +169,12 @@ class SeatsAPIView(GenericAPIView):
     serializer_class = BookingSerializer
     queryset = Booking.objects.all()
 
-    def get(self, request, user_id=None, screening_id=None):
-        if not user_id and not screening_id:
+    def get(self, request, screening_id=None):
+        if not screening_id:
             return
 
         try:
-            bookings = Booking.objects.filter(user=user_id, screening=screening_id)
+            bookings = Booking.objects.filter(screening=screening_id)
             serializer = BookingSerializer(bookings, many=True)
             return Response({"status": True, "data": serializer.data}, status=status.HTTP_200_OK)
         except Booking.DoesNotExist:

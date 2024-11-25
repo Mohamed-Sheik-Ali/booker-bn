@@ -8,7 +8,7 @@ import json
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']
+        fields = ['username', 'email', 'password', 'id']
 
 
 class LoginSerializer(serializers.ModelSerializer):

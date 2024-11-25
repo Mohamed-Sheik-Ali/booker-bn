@@ -9,6 +9,6 @@ urlpatterns = [
     path('movies/<int:id>/', MovieAPIView.as_view(), name='movie-detail'),
     path('screen/<int:id>/', ScreenAPIView.as_view(), name='screen'),
     path('book-seats/', BookSeatsAPIView.as_view(), name='booke-seats'),
-    path('booked-seats/<int:user_id>/<int:screening_id>/', SeatsAPIView.as_view(), name='booked-seats'),
+    path('booked-seats/<int:screening_id>/', SeatsAPIView.as_view(), name='booked-seats'),
     path('booking-history/<int:user_id>/', BookingHistoryAPIView.as_view(), name='booking-history')
 ]
