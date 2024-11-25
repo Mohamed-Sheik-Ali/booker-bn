@@ -46,12 +46,12 @@ class LoginView(APIView):
             return Response({"status": False, "data": "Invalid Password"}, status=status.HTTP_400_BAD_REQUEST)
 
         token, created = Token.objects.get_or_create(user=user)
-        serializer = self.serializer_class(user)  # Pass the user object to the serializer
+        serializer = self.serializer_class(user)
 
         return Response({
             "status": True,
             "token": token.key,
-            "data": serializer.data  # Contains id, email, and username
+            "data": serializer.data
         }, status=status.HTTP_200_OK)
 
 
@@ -139,7 +139,6 @@ class BookSeatsAPIView(APIView):
                 status=status.HTTP_404_NOT_FOUND,
             )
 
-        # Check if the seats are already booked
         existing_bookings = Booking.objects.filter(screening=screening)
         all_booked_seats = [
             seat for booking in existing_bookings for seat in booking.booked_seats_list
@@ -152,9 +151,8 @@ class BookSeatsAPIView(APIView):
                     status=status.HTTP_400_BAD_REQUEST,
                 )
 
-        # Save the booking
         booking = Booking(user=user, screening=screening)
-        booking.booked_seats_list = seats  # Use the property to handle JSON conversion
+        booking.booked_seats_list = seats
         booking.save()
 
         return Response(
