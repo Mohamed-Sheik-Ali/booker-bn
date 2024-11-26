@@ -38,7 +38,7 @@ class Theatre(models.Model):
 
 class Screen(models.Model):
     theatre = models.ForeignKey(Theatre, on_delete=models.CASCADE, related_name="screens")
-    name = models.CharField(max_length=255)  # Example: "Screen 1"
+    name = models.CharField(max_length=255)
     total_seats = models.PositiveIntegerField(default=None)
 
     def __str__(self):
