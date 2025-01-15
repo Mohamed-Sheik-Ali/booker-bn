@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
+from django.core.cache import cache
 
 from .serializers import RegisterSerializer, LoginSerializer, MovieSerializer, ScreenWithSeatSerializer, \
     ScreenSerializer, BookingSerializer, BookingHistorySerializer
@@ -36,6 +37,9 @@ class RegisterView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+USER_KEY = 'user_data'
+
+
 class LoginView(APIView):
     permission_classes = [AllowAny]
     serializer_class = LoginSerializer
@@ -48,10 +52,20 @@ class LoginView(APIView):
         token, created = Token.objects.get_or_create(user=user)
         serializer = self.serializer_class(user)
 
+        user_data = cache.get(USER_KEY)
+        user_detail = None
+        if not user_data:
+            print('NO CACHE')
+            user_detail = serializer.data
+            cache.set(USER_KEY, serializer.data)
+        else:
+            user_detail = cache.get(USER_KEY)
+            print('CACHED')
+
         return Response({
             "status": True,
             "token": token.key,
-            "data": serializer.data
+            "data": user_detail,
         }, status=status.HTTP_200_OK)
 
 
@@ -161,7 +175,6 @@ class BookSeatsAPIView(APIView):
         )
 
 
-
 class SeatsAPIView(GenericAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = BookingSerializer
@@ -193,4 +206,3 @@ class BookingHistoryAPIView(GenericAPIView):
             return Response({"status": True, "data": serializer.data}, status=status.HTTP_200_OK)
         except Booking.DoesNotExist:
             return Response({"status": True, "data": "Bookings not found"}, status=status.HTTP_404_NOT_FOUND)
-

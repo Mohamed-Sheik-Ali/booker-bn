@@ -45,6 +45,15 @@ class Screen(models.Model):
         return f"{self.name} - {self.theatre.name}"
 
 
+class ScreenProxy(Screen):
+    class Meta:
+        ordering = ['-theatre']
+        proxy = True
+
+    def get_seats_now(self):
+        return int(self.total_seats) * 100
+
+
 class Row(models.Model):
     screen = models.ForeignKey(Screen, on_delete=models.CASCADE, related_name="rows")
     name = models.CharField(max_length=5)
@@ -95,3 +104,21 @@ class Booking(models.Model):
     @booked_seats_list.setter
     def booked_seats_list(self, value):
         self.booked_seats = json.dumps(value)
+
+
+class ExtendedBooking(Booking):
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+
+    def __str__(self):
+        return f"{self.user.username} - {len(self.booked_seats_list)} seats - Total Price: {self.total_price}"
+
+    def calculate_total_price(self, price_per_seat):
+        booked_seats_count = len(self.booked_seats_list)
+        return booked_seats_count * price_per_seat
+
+    def save(self, *args, **kwargs):
+        # Assume a fixed price per seat
+        price_per_seat = 150.00
+        self.total_price = self.calculate_total_price(price_per_seat)
+        # Call the parent class's save method
+        super().save(*args, **kwargs)

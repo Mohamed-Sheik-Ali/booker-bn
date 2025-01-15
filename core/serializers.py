@@ -14,7 +14,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'email', 'username']
+        fields = ['id', 'email', 'password']
 
 
 class RowSerializer(serializers.ModelSerializer):

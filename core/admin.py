@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Movie, Theatre, Screen, Seat, Screening, Booking, Row
+from .models import Movie, Theatre, Screen, Seat, Screening, Booking, Row, ExtendedBooking
 
 admin.site.site_header = "Booker Admin Portal"
 admin.site.site_title = "Booker Admin Portal"
@@ -49,4 +49,8 @@ class ScreeningAdmin(admin.ModelAdmin):
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
     list_display = ("user", "screening", "booked_at")
+
+@admin.register(ExtendedBooking)
+class BookingAdmin(admin.ModelAdmin):
+    pass
 
