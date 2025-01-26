@@ -29,25 +29,25 @@ jobs:
         python manage.py test
 
   merge-to-main:
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/feature'
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout develop branch
+    - name: Checkout feature branch
       uses: actions/checkout@v4
       with:
-        ref: develop
+        ref: feature
 
     - name: Set up Git
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
 
-    - name: Merge develop into main
+    - name: Merge develop into develop
       run: |
         git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
         git fetch origin
-        git checkout main
-        git merge develop
-        git push origin main
+        git checkout develop
+        git merge feature
+        git push origin develop
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
