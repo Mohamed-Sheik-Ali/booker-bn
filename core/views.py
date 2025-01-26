@@ -93,7 +93,7 @@ class MovieAPIView(GenericAPIView):
             movies = Movie.objects.all()
             serializer = MovieSerializer(movies, many=True)
             return Response({"status": True, "data": serializer.data}, status=status.HTTP_200_OK)
-
+        # A COMMENT
         try:
             movie = Movie.objects.get(id=id)
             serializer = MovieSerializer(movie, many=False)
