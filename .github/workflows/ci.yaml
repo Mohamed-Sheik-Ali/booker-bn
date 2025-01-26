@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "feature", "develop", "main" ]
   pull_request:
-    branches: [ "main", "develop", "feature" ]
+    branches: ["develop"]
 
 jobs:
   build:
@@ -27,27 +27,3 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
-
-  merge-to-main:
-    if: github.ref == 'refs/heads/feature'
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout feature branch
-      uses: actions/checkout@v4
-      with:
-        ref: feature
-
-    - name: Set up Git
-      run: |
-        git config --global user.name 'github-actions'
-        git config --global user.email 'github-actions@github.com'
-
-    - name: Merge develop into develop
-      run: |
-        git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-        git fetch origin
-        git checkout develop
-        git merge feature
-        git push origin develop
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
